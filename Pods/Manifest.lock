@@ -1,0 +1,28 @@
+PODS:
+  - AFNetworking (1.2.1)
+  - JSONKit (1.5pre)
+  - MNColorKit (1.0.2)
+  - UIAlertView-Blocks (0.0.1)
+  - YBouncerKit (0.1.1):
+    - AFNetworking (~> 1.2.1)
+    - MNColorKit (~> 1.0.1)
+    - UIAlertView-Blocks (~> 0.0.1)
+
+DEPENDENCIES:
+  - AFNetworking (~> 1.2.1)
+  - JSONKit
+  - MNColorKit (~> 1.0.1)
+  - YBouncerKit (from `../YBouncerKit/`)
+
+EXTERNAL SOURCES:
+  YBouncerKit:
+    :path: ../YBouncerKit/
+
+SPEC CHECKSUMS:
+  AFNetworking: a44069e3c9c89867544f6639482f155c7e5f9b41
+  JSONKit: 409734ab3407fce90ef7eaa95d7168f38d9a6601
+  MNColorKit: 61380ff9c94430be602684a3dfb18c18dec7bb78
+  UIAlertView-Blocks: 7689ad7dd941417e7a7da81507482bc6f4f15bcd
+  YBouncerKit: c2b274ff9fca396ed4c4982269ee528338c14c0c
+
+COCOAPODS: 0.23.0
