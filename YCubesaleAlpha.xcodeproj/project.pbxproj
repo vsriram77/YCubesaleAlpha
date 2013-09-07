@@ -27,6 +27,8 @@
 		05CB9E2D17D973A500F4D82A /* ListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CB9E2C17D973A500F4D82A /* ListItemCell.m */; };
 		05CB9E2F17D973BA00F4D82A /* ListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05CB9E2E17D973BA00F4D82A /* ListItemCell.xib */; };
 		05CB9E3217D9773000F4D82A /* ListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CB9E3117D9773000F4D82A /* ListItem.m */; };
+		05CB9E3517DAB28200F4D82A /* RestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CB9E3417DAB28200F4D82A /* RestObject.m */; };
+		05CB9E3A17DABDA900F4D82A /* NSDictionary+CPAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CB9E3917DABDA900F4D82A /* NSDictionary+CPAdditions.m */; };
 		E6359728FED34FC291851B13 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A07E714A4C3B4315A8F4EB6D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +72,11 @@
 		05CB9E2E17D973BA00F4D82A /* ListItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListItemCell.xib; sourceTree = "<group>"; };
 		05CB9E3017D9773000F4D82A /* ListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListItem.h; sourceTree = "<group>"; };
 		05CB9E3117D9773000F4D82A /* ListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItem.m; sourceTree = "<group>"; };
+		05CB9E3317DAB28200F4D82A /* RestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestObject.h; sourceTree = "<group>"; };
+		05CB9E3417DAB28200F4D82A /* RestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestObject.m; sourceTree = "<group>"; };
+		05CB9E3617DABD4800F4D82A /* YCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCommon.h; sourceTree = "<group>"; };
+		05CB9E3817DABDA900F4D82A /* NSDictionary+CPAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CPAdditions.h"; sourceTree = "<group>"; };
+		05CB9E3917DABDA900F4D82A /* NSDictionary+CPAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+CPAdditions.m"; sourceTree = "<group>"; };
 		A07E714A4C3B4315A8F4EB6D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EED2991CE2704918BB47D3B4 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -134,6 +141,7 @@
 		05C7602717CC39B400810E53 /* YCubesaleAlpha */ = {
 			isa = PBXGroup;
 			children = (
+				05CB9E3717DABD8C00F4D82A /* Utilities */,
 				05C7603017CC39B400810E53 /* AppDelegate.h */,
 				05C7603117CC39B400810E53 /* AppDelegate.m */,
 				05C7603317CC39B400810E53 /* Images.xcassets */,
@@ -151,6 +159,8 @@
 				05CB9E2E17D973BA00F4D82A /* ListItemCell.xib */,
 				05CB9E3017D9773000F4D82A /* ListItem.h */,
 				05CB9E3117D9773000F4D82A /* ListItem.m */,
+				05CB9E3317DAB28200F4D82A /* RestObject.h */,
+				05CB9E3417DAB28200F4D82A /* RestObject.m */,
 			);
 			path = YCubesaleAlpha;
 			sourceTree = "<group>";
@@ -162,6 +172,7 @@
 				05C7602A17CC39B400810E53 /* InfoPlist.strings */,
 				05C7602D17CC39B400810E53 /* main.m */,
 				05C7602F17CC39B400810E53 /* YCubesaleAlpha-Prefix.pch */,
+				05CB9E3617DABD4800F4D82A /* YCommon.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -182,6 +193,15 @@
 				05C7604317CC39B400810E53 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		05CB9E3717DABD8C00F4D82A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				05CB9E3817DABDA900F4D82A /* NSDictionary+CPAdditions.h */,
+				05CB9E3917DABDA900F4D82A /* NSDictionary+CPAdditions.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,10 +337,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05CB9E3A17DABDA900F4D82A /* NSDictionary+CPAdditions.m in Sources */,
 				05C7605617CC3CBD00810E53 /* BouncerLoginViewController.m in Sources */,
 				05CB9E2417D95E7300F4D82A /* WelcomeViewController.m in Sources */,
 				05CB9E2D17D973A500F4D82A /* ListItemCell.m in Sources */,
 				05CB9E3217D9773000F4D82A /* ListItem.m in Sources */,
+				05CB9E3517DAB28200F4D82A /* RestObject.m in Sources */,
 				05CB9E2917D9653E00F4D82A /* ListingsViewController.m in Sources */,
 				05C7603217CC39B400810E53 /* AppDelegate.m in Sources */,
 				05C7602E17CC39B400810E53 /* main.m in Sources */,

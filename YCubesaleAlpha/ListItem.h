@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ListItem : NSObject 
+@interface ListItem : RestObject
 
-@property (nonatomic, strong) NSString *sdesc;
-@property (nonatomic, strong) NSString *ctime;
+@property (nonatomic, strong, readonly) NSString *sdesc;
+@property (nonatomic, strong, readonly) NSString *ctime;
+
++ (NSMutableArray *)listItemsWithArray:(NSArray *)array;
 
 @end

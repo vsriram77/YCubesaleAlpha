@@ -20,7 +20,7 @@
 
 @implementation ListingsViewController
 
-/*
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -29,11 +29,12 @@
     if (self) {
         self.title = self.savedName;
         NSLog(@"%@", @"TimelineVC:initWithStyle about to call reload...");
+        [self reload];
         
     }
     return self;
 }
-*/
+
 
 
 - (NSString*) savedUserId {
@@ -71,7 +72,14 @@
 {
     [super viewDidLoad];
     NSLog(@"ListingsViewController: viewDidLoad enter");
+    UINib *customNib = [UINib nibWithNibName:@"ListItemCell" bundle:nil];
+    [self.tableView registerNib:customNib forCellReuseIdentifier:@"ListItemCell"];
+    
+}
 
+- (void)reload
+{
+    
     // Do any additional setup after loading the view from its nib.
     //self.userIdLabel.text = self.savedUserId;
     //self.nameLabel.text = self.savedName;
@@ -79,7 +87,7 @@
     static NSString *const urlString = @"http://cubesale.corp.yahoo.com/index.php?cmd=updateList";
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    NSLog(@"ListingsViewController: viewDidLoad here 1");
+    NSLog(@"ListingsViewController: reload here 1");
     
     // 2
     AFJSONRequestOperation *operation =
@@ -89,7 +97,15 @@
                                                         NSLog(@"didTapGetNameButtonnnnnn: Cubesale Call successful!");
                                                         NSDictionary *dict  = (NSDictionary *)JSON;
                                                         NSArray *items = (NSArray*)[dict valueForKey:@"items"];
+                                                        NSRange theRange;
                                                         
+                                                        theRange.location = items.count - 101;
+                                                        theRange.length = 100;
+                                                        
+                                                        items = [items subarrayWithRange:theRange];
+                                                        
+                                                        self.listItems = [ListItem listItemsWithArray:items];
+                                                        /*
                                                         self.listItems = [[NSMutableArray alloc] initWithCapacity:100];
                                                         int i=0;
                                                         NSLog(@"ListingsViewController: count %d", items.count);
@@ -100,18 +116,24 @@
                                                             ListItem *listItem = [[ListItem alloc] init];
                                                             listItem.sdesc = sdesc;
                                                             listItem.ctime = ctime;
-                                                            [[self listItems] addObject:listItem];
-                                                            NSLog(@"ListingsViewController: sdesc %@", sdesc);
-                                                            NSLog(@"ListingsViewController: ctime %@", ctime);
-                                                        }
 
-                                                        UINib *customNib = [UINib nibWithNibName:@"ListItemCell" bundle:nil];
-                                                        [self.tableView registerNib:customNib forCellReuseIdentifier:@"ListItemCell"];
+                                                            [[self listItems] addObject:listItem];
+                                                            //NSLog(@"ListingsViewController: sdesc %@", sdesc);
+                                                            //NSLog(@"ListingsViewController: ctime %@", ctime);
+                                                        }
+                                                        ListItem *tempItem = self.listItems[0];
+                                                        
+                                                        NSLog(@"ListingsViewController: 0th sdesc %@", tempItem.sdesc);
+                                                        NSLog(@"ListingsViewController: 0th ctime %@", tempItem.ctime);
+                                                        */
+                                                        
+                                                        [self.tableView reloadData];
+
                                                         
                                                     }
      // 4
                                                     failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                                                        NSLog(@"ListingsViewController: viewDidLoad error");
+                                                        NSLog(@"ListingsViewController: reload error");
                                                         UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error logging in"
                                                                                                      message:[NSString stringWithFormat:@"%@",error]
                                                                                                     delegate:nil
@@ -122,7 +144,6 @@
     
     // 5
     [operation start];
-
     
 }
 
@@ -157,14 +178,17 @@
     
     [cell.sdescLabel setLineBreakMode: NSLineBreakByWordWrapping];
     cell.sdescLabel.numberOfLines = 0;
+    [cell.sdescLabel sizeToFit];
     
     return cell;
 }
 
+/*
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 70;
 }
+*/
 
 #pragma mark - Table view delegate
 
