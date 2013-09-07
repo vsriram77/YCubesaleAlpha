@@ -13,8 +13,8 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) BouncerLoginViewController *bouncerLoginViewController;
 @property (strong, nonatomic) WelcomeViewController *welcomeViewController;
+@property (strong, nonatomic) NSString *savedUserId;
 
 
 @end

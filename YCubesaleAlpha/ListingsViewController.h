@@ -8,17 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ListingsViewController : UITableViewController {
-    NSString *_savedUserId;
-    NSString *_savedName;
-}
+@interface ListingsViewController : UITableViewController
 
-//@property (nonatomic, weak) NSString *savedUserId;
-- (NSString*) savedUserId;
-- (void) setSavedUserId:(NSString *)savedUserId;
-- (NSString*) savedName;
-- (void) setSavedName:(NSString *)savedName;
-
-
+@property (nonatomic, weak) NSString *savedUserId;
+@property (nonatomic, weak) NSString *savedUserName;
 
 @end

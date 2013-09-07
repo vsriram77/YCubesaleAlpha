@@ -10,53 +10,35 @@
 #import "AFNetworking.h"
 #import "ListItemCell.h"
 #import "ListItem.h"
+#import "ListingCardViewController.h"
 
 
 @interface ListingsViewController ()
 
 @property (nonatomic, strong) NSMutableArray *listItems;
 
+- (void) getUserNameWithEmail: (NSString *)email;
+
 @end
 
 @implementation ListingsViewController
+
+@synthesize savedUserId;
+@synthesize savedUserName;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
-    NSLog(@"%@", @"TimelineVC:initWithStyle called...");
+    NSLog(@"%@", @"ListingsViewController:initWithStyle called...");
     
     if (self) {
-        self.title = self.savedName;
-        NSLog(@"%@", @"TimelineVC:initWithStyle about to call reload...");
+        NSLog(@"%@", @"ListingsViewController:initWithStyle about to call reload...");
         [self reload];
         
     }
     return self;
 }
-
-
-
-- (NSString*) savedUserId {
-    
-    return _savedUserId;
-}
-
-- (void) setSavedUserId:(NSString *)savedUserId
-{
-    _savedUserId = savedUserId;
-}
-
-- (NSString*) savedName {
-    
-    return _savedName;
-}
-
-- (void) setSavedName:(NSString *)savedName
-{
-    _savedUserId = savedName;
-}
-
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -74,6 +56,10 @@
     NSLog(@"ListingsViewController: viewDidLoad enter");
     UINib *customNib = [UINib nibWithNibName:@"ListItemCell" bundle:nil];
     [self.tableView registerNib:customNib forCellReuseIdentifier:@"ListItemCell"];
+    
+    //[self getUserNameWithEmail:self.savedUserId];
+    self.title = self.savedUserId;
+    [self.navigationItem setHidesBackButton:YES];
     
 }
 
@@ -99,10 +85,12 @@
                                                         NSArray *items = (NSArray*)[dict valueForKey:@"items"];
                                                         NSRange theRange;
                                                         
-                                                        theRange.location = items.count - 101;
+                                                        theRange.location = items.count - 100;
                                                         theRange.length = 100;
                                                         
-                                                        items = [items subarrayWithRange:theRange];
+                                                        items = [[[items subarrayWithRange:theRange]
+                                                                 reverseObjectEnumerator] allObjects];
+                                                        //items = [[items reverseObjectEnumerator] allObjects];
                                                         
                                                         self.listItems = [ListItem listItemsWithArray:items];
                                                         /*
@@ -153,6 +141,44 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) getUserNameWithEmail: (NSString *)email
+{
+    static NSString *const baseURLString = @"http://php.corp.yahoo.com/";
+    NSString *userProfileJsonUrl = [NSString stringWithFormat:@"%@emp.php?query=%@&type=email", baseURLString, email];
+    NSURL *url = [NSURL URLWithString:userProfileJsonUrl];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    NSLog(@"getUserNameWithEmail: before Request");
+    // 2
+    AFJSONRequestOperation *operation =
+    [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+     // 3
+                                                    success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                        NSLog(@"getUserNameWithEmail: Call successful!");
+                                                        NSDictionary *dict  = (NSDictionary *)JSON;
+                                                        NSArray *yahoos = (NSArray*)[dict valueForKey:@"yahoos"];
+                                                        NSDictionary *aYahoo = [yahoos objectAtIndex: 0];
+                                                        self.savedUserName =  (NSString*)[aYahoo valueForKey:@"yfirst"];
+                                                        NSString *yahooName = self.savedUserName;
+                                                        NSLog(@"Name: %@", yahooName);
+                                                        
+                                                        
+                                                    }
+     // 4
+                                                    failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                        NSLog(@"didTapGetNameButton: Call failed!");
+                                                        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Weather"
+                                                                                                     message:[NSString stringWithFormat:@"%@",error]
+                                                                                                    delegate:nil
+                                                                                           cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                                        [av show];
+                                                    }];
+    
+    // 5
+    [operation waitUntilFinished];
+    
+}
+
 
 #pragma mark - Table view data source
 
@@ -183,18 +209,24 @@
     return cell;
 }
 
-/*
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 70;
-}
-*/
+
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    ListingCardViewController *lcvc = [[ListingCardViewController alloc] init];
+    ListItem *listItem = self.listItems[indexPath.row];    
+    lcvc.listItem = listItem;
+    [self.navigationController pushViewController:lcvc animated:YES];
 }
+
+    /*
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    BATTrailsViewController *trailsController = [[BATTrailsViewController alloc] initWithStyle:UITableViewStylePlain];
+    trailsController.selectedRegion = [regions objectAtIndex:indexPath.row];
+    [[self navigationController] pushViewController:trailsController animated:YES];
+     */
 
 
 @end

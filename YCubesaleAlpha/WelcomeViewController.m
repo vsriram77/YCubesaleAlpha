@@ -9,6 +9,7 @@
 #import "WelcomeViewController.h"
 #import "AFNetworking.h"
 #import "ListingsViewController.h"
+#import "BouncerLoginViewController.h"
 
 
 @interface WelcomeViewController ()
@@ -40,47 +41,42 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    NSLog(@"WelcomeViewController: viewDidLoad Enter");
+
     self.userIdLabel.text = self.savedUserId;
-    NSLog(@"didTapGetNameButton: Enter");
-    static NSString *const baseURLString = @"http://php.corp.yahoo.com/";
-    NSString *userProfileJsonUrl = [NSString stringWithFormat:@"%@emp.php?query=%@&type=email", baseURLString, self.savedUserId];
-    NSURL *url = [NSURL URLWithString:userProfileJsonUrl];
+
+    if ([self.savedUserId isEqualToString:@""]) {
+        BouncerLoginViewController *bouncerViewController = [[ BouncerLoginViewController alloc] init];
+
+        [self.navigationController pushViewController:bouncerViewController animated:YES];
+        return;
+    }
+    
+    static NSString *const baseURLString = @"http://bug.corp.yahoo.com/";
+    NSURL *url = [NSURL URLWithString:baseURLString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    NSLog(@"didTapGetNameButton: before Request");
+    NSLog(@"WelcomeViewController: before Request");
     // 2
-    AFJSONRequestOperation *operation =
-    [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-     // 3
-                                                    success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                                        NSLog(@"didTapGetNameButton: Call successful!");
-                                                        NSDictionary *dict  = (NSDictionary *)JSON;
-                                                        NSArray *yahoos = (NSArray*)[dict valueForKey:@"yahoos"];
-                                                        NSDictionary *aYahoo = [yahoos objectAtIndex: 0];
-                                                        NSString *yahooName =  (NSString*)[aYahoo valueForKey:@"yfirst"];
-                                                        NSLog(@"Namennnn: %@", yahooName);
-                                                        self.userIdLabel.text = yahooName;
-                                                        ListingsViewController *listingsController = [[ListingsViewController alloc] init];
-                                                        //[listingsController setSavedUserId:self.savedUserId];
-                                                        //[listingsController setSavedName:yahooName];
-                                                        
-                                                        [self.navigationController pushViewController:listingsController animated:YES];
-
-                                                    }
-     // 4
-                                                    failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                                                        NSLog(@"didTapGetNameButton: Call failed!");
-                                                        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error logging in"
-                                                                                                     message:[NSString stringWithFormat:@"%@",error]
-                                                                                                    delegate:nil
-                                                                                           cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                                        [av show];
-                                                        self.userIdLabel.text = @"error!";
-
-                                                    }];
+    AFHTTPRequestOperation *operation =
+    [[AFHTTPRequestOperation alloc] initWithRequest:request ];
     
-    // 5
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"WelcomeViewController: request success");
+        
+        ListingsViewController *listingsController = [[ListingsViewController alloc] init];
+        listingsController.savedUserId = self.savedUserId;
+        [self.navigationController pushViewController:listingsController animated:YES];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"WelcomeViewController: request failed");
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sign In Error"
+                                                     message:[NSString stringWithFormat:@"%@",error]
+                                                    delegate:nil
+                                           cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        self.userIdLabel.text = @"error!";
+    }];
+    
     [operation start];
     
     

@@ -9,8 +9,8 @@
 #import "BouncerLoginViewController.h"
 #import "YHBKSigninService.h"
 #import "AFNetworking.h"
-
-
+#import "ListingsViewController.h"
+#import "AppDelegate.h"
 
 
 @interface BouncerLoginViewController ()
@@ -67,11 +67,18 @@
     NSString *username = self.useridTextField.text;
     NSString *password = self.passwordTextField.text;
     [self setSavedUserId:username];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.savedUserId = username;
     NSLog(@"savedUserId from inside didTapSignInButton: %@", [self savedUserId]);
     
     YHBKSigninService * signinService = [YHBKSigninService sharedInstance];
     [signinService signinWithUsername:username password:password success:^{
         self.statusLabel.text = @"Authenticated";
+        NSLog(@"bouncer successfullly done: %@", [self savedUserId]);
+        ListingsViewController *listingsController = [[ListingsViewController alloc] init];
+        listingsController.savedUserId = username;
+        [self.navigationController pushViewController:listingsController animated:YES];
+
     } failure:^(NSError *error){ self.statusLabel.text = @"Login Error.. Try again";}];
     
 }
@@ -99,6 +106,7 @@
                                                         NSString *yahooName =  (NSString*)[aYahoo valueForKey:@"yfirst"];
                                                         NSLog(@"Name: %@", yahooName);
                                                         self.nameLabel.text = yahooName;
+
                                                     }
      // 4
                                                     failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
@@ -136,6 +144,13 @@
                                                         NSString *yahooName =  (NSString*)[aYahoo valueForKey:@"yfirst"];
                                                         NSLog(@"Name: %@", yahooName);
                                                         self.nameLabel.text = yahooName;
+                                                        ListingsViewController *listingsController = [[ListingsViewController alloc] init];
+                                                        
+                                                        //[listingsController setSavedUserId:self.savedUserId];
+                                                        //[listingsController setSavedName:yahooName];
+                                                        
+                                                        [self.navigationController pushViewController:listingsController animated:YES];
+
                                                     }
      // 4
                                                     failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {

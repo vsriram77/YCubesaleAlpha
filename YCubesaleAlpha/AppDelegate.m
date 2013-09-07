@@ -10,6 +10,8 @@
 
 @implementation AppDelegate
 
+@synthesize savedUserId;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -68,7 +70,8 @@
 
 - (void) doSaveUserId
 {
-    NSLog(@"doSaveUserId: saving userid: %@", [self.bouncerLoginViewController savedUserId]);
-    [[NSUserDefaults standardUserDefaults] setObject:[self.bouncerLoginViewController savedUserId] forKey:@"SAVED_USERID"];
+    
+    NSLog(@"doSaveUserId: saving userid: %@", self.savedUserId);
+    [[NSUserDefaults standardUserDefaults] setObject:self.savedUserId forKey:@"SAVED_USERID"];
 }
 @end

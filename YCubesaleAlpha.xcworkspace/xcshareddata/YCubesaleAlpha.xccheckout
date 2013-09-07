@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>29FD451A-6FBB-4087-BCBD-495C29A4CC03</string>
+	<key>IDESourceControlProjectName</key>
+	<string>YCubesaleAlpha</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>ABDD76E4-9F63-4D04-988F-ED29FDD8B134</key>
+		<string>ssh://git.corp.yahoo.com/mnijdam/YBouncerKit.git</string>
+		<key>FE380AE3-5AB0-4879-91E1-77C28F8DCCFD</key>
+		<string>https://github.com/vsriram77/YCubesaleAlpha.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>YCubesaleAlpha.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>ABDD76E4-9F63-4D04-988F-ED29FDD8B134</key>
+		<string>../../YBouncerKit</string>
+		<key>FE380AE3-5AB0-4879-91E1-77C28F8DCCFD</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/vsriram77/YCubesaleAlpha.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>FE380AE3-5AB0-4879-91E1-77C28F8DCCFD</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>ABDD76E4-9F63-4D04-988F-ED29FDD8B134</string>
+			<key>IDESourceControlWCCName</key>
+			<string>YBouncerKit</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FE380AE3-5AB0-4879-91E1-77C28F8DCCFD</string>
+			<key>IDESourceControlWCCName</key>
+			<string>YCubesaleAlpha</string>
+		</dict>
+	</array>
+</dict>
+</plist>

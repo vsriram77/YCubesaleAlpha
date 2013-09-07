@@ -12,4 +12,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *sdescLabel;
 @property (nonatomic, weak) IBOutlet UILabel *ctimeLabel;
 
+- (IBAction)onTapTableCell;
+
 @end

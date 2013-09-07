@@ -30,6 +30,7 @@
                     <constraint firstAttribute="bottom" secondItem="GWN-bD-QkZ" secondAttribute="bottom" constant="11" id="WbF-Gv-FDy"/>
                 </constraints>
             </tableViewCellContentView>
+            <gestureRecognizers/>
             <connections>
                 <outlet property="ctimeLabel" destination="GWN-bD-QkZ" id="Hxv-9u-Ja4"/>
                 <outlet property="sdescLabel" destination="Gzw-g3-mcr" id="CQs-u2-OSJ"/>

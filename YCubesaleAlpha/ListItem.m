@@ -14,8 +14,36 @@
     return [self.data valueOrNilForKeyPath:@"sdesc"];
 }
 
+- (NSString *)fdesc {
+    return [self.data valueOrNilForKeyPath:@"fdesc"];
+}
+
+- (NSString *)ynick {
+    return [self.data valueOrNilForKeyPath:@"ynick"];
+}
+
 - (NSString *)ctime {
     return [self.data valueOrNilForKeyPath:@"ctime"];
+}
+
+- (NSString *)cat {
+    return [self.data valueOrNilForKeyPath:@"cat"];
+}
+
+- (NSString *)loc {
+    return [self.data valueOrNilForKeyPath:@"loc"];
+}
+
+- (NSString *)cube {
+    return [self.data valueOrNilForKeyPath:@"cube"];
+}
+
+- (NSString *)image {
+    return [self.data valueOrNilForKeyPath:@"image"];
+}
+
+- (NSString *)price {
+    return [self.data valueOrNilForKeyPath:@"price"];
 }
 
 + (NSMutableArray *)listItemsWithArray:(NSArray *)array {

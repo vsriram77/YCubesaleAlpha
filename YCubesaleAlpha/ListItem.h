@@ -11,7 +11,14 @@
 @interface ListItem : RestObject
 
 @property (nonatomic, strong, readonly) NSString *sdesc;
+@property (nonatomic, strong, readonly) NSString *fdesc;
+@property (nonatomic, strong, readonly) NSString *ynick;
 @property (nonatomic, strong, readonly) NSString *ctime;
+@property (nonatomic, strong, readonly) NSString *cat;
+@property (nonatomic, strong, readonly) NSString *loc;
+@property (nonatomic, strong, readonly) NSString *cube;
+@property (nonatomic, strong, readonly) NSString *price;
+@property (nonatomic, strong, readonly) NSString *image;
 
 + (NSMutableArray *)listItemsWithArray:(NSArray *)array;
 
