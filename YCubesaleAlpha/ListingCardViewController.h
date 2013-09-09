@@ -25,6 +25,11 @@
 @property (nonatomic, weak) IBOutlet UILabel *fpriceLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *imageImage;
 
+@property (nonatomic, weak) IBOutlet UILabel *fromStaticLabel;
+@property (nonatomic, weak) IBOutlet UILabel *priceStaticLabel;
+@property (nonatomic, weak) IBOutlet UILabel *catStaticLabel;
+
+
 - (IBAction) onSendEmailPress;
 
 

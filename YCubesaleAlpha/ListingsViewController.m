@@ -18,6 +18,8 @@
 @property (nonatomic, strong) NSMutableArray *listItems;
 
 - (void) getUserNameWithEmail: (NSString *)email;
+- (void) formatCellWithBackground:(UIColor *) bgcolor textColor:(UIColor *) textColor;
+
 
 @end
 
@@ -198,11 +200,21 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    ListItemCell *listItemCell = (ListItemCell*) cell;
     if (indexPath.row % 2 == 0) {
-        cell.backgroundColor = UIColorFromRGB(0xF5F6CE);
+        [self formatCell:listItemCell backgroundColor:[UIColor blackColor] textColor:[UIColor whiteColor]];
     } else {
-        cell.backgroundColor = UIColorFromRGB(0xad00ff);
+        [self formatCell:listItemCell backgroundColor: UIColorFromRGB(0x400090) textColor:[UIColor whiteColor]];
     }
+}
+
+- (void) formatCell:(ListItemCell *) listItemCell backgroundColor:(UIColor *) backgroundColor textColor:(UIColor *) textColor
+{
+    listItemCell.sdescLabel.textColor = textColor;
+    listItemCell.ctimeLabel.textColor = textColor;
+    listItemCell.fpriceLabel.textColor = textColor;
+    listItemCell.ynickLabel.textColor = textColor;
+    listItemCell.backgroundColor = backgroundColor;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
