@@ -7,14 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BouncerLoginViewController.h"
-#import "WelcomeViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) WelcomeViewController *welcomeViewController;
-@property (strong, nonatomic) NSString *savedUserId;
-
 
 @end

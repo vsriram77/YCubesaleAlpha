@@ -22,7 +22,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *catLabel;
 @property (nonatomic, weak) IBOutlet UILabel *cubeLabel;
 @property (nonatomic, weak) IBOutlet UILabel *locLabel;
-@property (nonatomic, weak) IBOutlet UILabel *priceLabel;
+@property (nonatomic, weak) IBOutlet UILabel *fpriceLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *imageImage;
 
 - (IBAction) onSendEmailPress;

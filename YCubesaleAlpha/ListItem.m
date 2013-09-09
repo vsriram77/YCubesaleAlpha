@@ -11,39 +11,39 @@
 @implementation ListItem
 
 - (NSString *)sdesc {
-    return [self.data valueOrNilForKeyPath:@"sdesc"];
+    return [self.data stringValueForKeyPath:@"sdesc"];
 }
 
 - (NSString *)fdesc {
-    return [self.data valueOrNilForKeyPath:@"fdesc"];
+    return [self.data stringValueForKeyPath:@"fdesc"];
 }
 
 - (NSString *)ynick {
-    return [self.data valueOrNilForKeyPath:@"ynick"];
+    return [self.data stringValueForKeyPath:@"ynick"];
 }
 
 - (NSString *)ctime {
-    return [self.data valueOrNilForKeyPath:@"ctime"];
+    return [self.data stringValueForKeyPath:@"ctime"];
 }
 
 - (NSString *)cat {
-    return [self.data valueOrNilForKeyPath:@"cat"];
+    return [self.data stringValueForKeyPath:@"cat"];
 }
 
 - (NSString *)loc {
-    return [self.data valueOrNilForKeyPath:@"loc"];
+    return [self.data stringValueForKeyPath:@"loc"];
 }
 
 - (NSString *)cube {
-    return [self.data valueOrNilForKeyPath:@"cube"];
+    return [self.data stringValueForKeyPath:@"cube"];
 }
 
 - (NSString *)image {
-    return [self.data valueOrNilForKeyPath:@"image"];
+    return [self.data stringValueForKeyPath:@"image"];
 }
 
-- (NSString *)price {
-    return [self.data valueOrNilForKeyPath:@"price"];
+- (NSString *)fprice {
+    return [self.data stringValueForKeyPath:@"fprice"];
 }
 
 + (NSMutableArray *)listItemsWithArray:(NSArray *)array {

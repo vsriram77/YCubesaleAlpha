@@ -65,72 +65,59 @@
 
 - (void)reload
 {
-    
-    // Do any additional setup after loading the view from its nib.
-    //self.userIdLabel.text = self.savedUserId;
-    //self.nameLabel.text = self.savedName;
-    
     static NSString *const urlString = @"http://cubesale.corp.yahoo.com/index.php?cmd=updateList";
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    NSLog(@"ListingsViewController: reload here 1");
+    NSLog(@"ListingsViewController: reload :: 1");
     
-    // 2
-    AFJSONRequestOperation *operation =
-    [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-     // 3
-                                                    success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                                        NSLog(@"didTapGetNameButtonnnnnn: Cubesale Call successful!");
-                                                        NSDictionary *dict  = (NSDictionary *)JSON;
-                                                        NSArray *items = (NSArray*)[dict valueForKey:@"items"];
-                                                        NSRange theRange;
-                                                        
-                                                        theRange.location = items.count - 100;
-                                                        theRange.length = 100;
-                                                        
-                                                        items = [[[items subarrayWithRange:theRange]
-                                                                 reverseObjectEnumerator] allObjects];
-                                                        //items = [[items reverseObjectEnumerator] allObjects];
-                                                        
-                                                        self.listItems = [ListItem listItemsWithArray:items];
-                                                        /*
-                                                        self.listItems = [[NSMutableArray alloc] initWithCapacity:100];
-                                                        int i=0;
-                                                        NSLog(@"ListingsViewController: count %d", items.count);
-                                                        for (i = items.count-1; i >= (items.count - 100); i--) {
-                                                            NSDictionary *anItem = [items objectAtIndex: i];
-                                                            NSString *sdesc =  (NSString*)[anItem valueForKey:@"sdesc"];
-                                                            NSString *ctime =  (NSString*)[anItem valueForKey:@"ctime"];
-                                                            ListItem *listItem = [[ListItem alloc] init];
-                                                            listItem.sdesc = sdesc;
-                                                            listItem.ctime = ctime;
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation
+                    JSONRequestOperationWithRequest:request
+                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                            NSDictionary *dict  = (NSDictionary *)JSON;
+                            NSArray *items = (NSArray*)[dict valueForKey:@"items"];
+                            NSRange theRange;
+                            
+                            theRange.location = items.count - 100;
+                            theRange.length = 100;
+                            
+                            items = [[[items subarrayWithRange:theRange] reverseObjectEnumerator] allObjects];
+                            self.listItems = [ListItem listItemsWithArray:items];
+                            [self.tableView reloadData];
 
-                                                            [[self listItems] addObject:listItem];
-                                                            //NSLog(@"ListingsViewController: sdesc %@", sdesc);
-                                                            //NSLog(@"ListingsViewController: ctime %@", ctime);
-                                                        }
-                                                        ListItem *tempItem = self.listItems[0];
-                                                        
-                                                        NSLog(@"ListingsViewController: 0th sdesc %@", tempItem.sdesc);
-                                                        NSLog(@"ListingsViewController: 0th ctime %@", tempItem.ctime);
-                                                        */
-                                                        
-                                                        [self.tableView reloadData];
+                            /*
+                             self.listItems = [[NSMutableArray alloc] initWithCapacity:100];
+                             int i=0;
+                             NSLog(@"ListingsViewController: count %d", items.count);
+                             for (i = items.count-1; i >= (items.count - 100); i--) {
+                             NSDictionary *anItem = [items objectAtIndex: i];
+                             NSString *sdesc =  (NSString*)[anItem valueForKey:@"sdesc"];
+                             NSString *ctime =  (NSString*)[anItem valueForKey:@"ctime"];
+                             ListItem *listItem = [[ListItem alloc] init];
+                             listItem.sdesc = sdesc;
+                             listItem.ctime = ctime;
+                             
+                             [[self listItems] addObject:listItem];
+                             //NSLog(@"ListingsViewController: sdesc %@", sdesc);
+                             //NSLog(@"ListingsViewController: ctime %@", ctime);
+                             }
+                             ListItem *tempItem = self.listItems[0];
+                             
+                             NSLog(@"ListingsViewController: 0th sdesc %@", tempItem.sdesc);
+                             NSLog(@"ListingsViewController: 0th ctime %@", tempItem.ctime);
+                             */
+                            
+                            
+                            
+                        }
+                                         // 4
+                        failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                            NSLog(@"ListingsViewController: reload error");
+                            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error logging in"                                                                         message:[NSString stringWithFormat:@"%@",error]                                                                        delegate:nil
+                                cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                            [av show];
+                            
+                        }];
 
-                                                        
-                                                    }
-     // 4
-                                                    failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                                                        NSLog(@"ListingsViewController: reload error");
-                                                        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error logging in"
-                                                                                                     message:[NSString stringWithFormat:@"%@",error]
-                                                                                                    delegate:nil
-                                                                                           cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                                        [av show];
-                                                        
-                                                    }];
-    
-    // 5
     [operation start];
     
 }
@@ -199,15 +186,42 @@
     
     ListItem *listItem = self.listItems[indexPath.row];
     
-    cell.sdescLabel.text = listItem.sdesc;
-    cell.ctimeLabel.text = listItem.ctime;
     
     [cell.sdescLabel setLineBreakMode: NSLineBreakByWordWrapping];
     cell.sdescLabel.numberOfLines = 0;
-    [cell.sdescLabel sizeToFit];
+    cell.sdescLabel.text = listItem.sdesc;
+    cell.ctimeLabel.text = listItem.ctime;
+    cell.ynickLabel.text = listItem.ynick;
+    cell.fpriceLabel.text = listItem.fprice;
     
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row % 2 == 0) {
+        cell.backgroundColor = UIColorFromRGB(0xF5F6CE);
+    } else {
+        cell.backgroundColor = UIColorFromRGB(0xad00ff);
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60;
+}
+/*
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ListItem *listItem = self.listItems[indexPath.row];
+    
+    CGSize size = [listItem.sdesc sizeWithFont:[UIFont systemFontOfSize:17]
+                             constrainedToSize:CGSizeMake(self.view.window.bounds.size.width - 40,     CGFLOAT_MAX)
+                                 lineBreakMode:NSLineBreakByWordWrapping];
+    
+    
+    return size.height+60;
+}
+ */
 
 
 

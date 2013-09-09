@@ -12,6 +12,7 @@
 
 - (id)objectOrNilForKey:(id)key;
 - (id)valueOrNilForKeyPath:(id)keyPath;
+- (NSString *)stringValueForKeyPath:(id)keyPath;
 
 @end
 

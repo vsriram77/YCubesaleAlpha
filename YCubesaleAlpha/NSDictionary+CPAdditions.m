@@ -28,4 +28,13 @@
     return object;
 }
 
+
+- (NSString *)stringValueForKeyPath:(id)keyPath {
+    id object = [self valueForKeyPath:keyPath];
+    if ((NSNull *)object == [NSNull null] || [object isEqual:@"<null>"]) {
+        return @"";
+    }
+    return (NSString *)object;
+}
+
 @end

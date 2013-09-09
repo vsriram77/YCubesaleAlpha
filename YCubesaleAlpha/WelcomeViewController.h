@@ -8,14 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WelcomeViewController : UIViewController {
-    NSString *_savedUserId;
-}
+@interface WelcomeViewController : UIViewController
 
-//@property (nonatomic, weak) NSString *savedUserId;
-- (NSString*) savedUserId;
-- (void) setSavedUserId:(NSString *)savedUserId;
-
-@property (nonatomic, weak) IBOutlet UILabel *userIdLabel;
+@property (nonatomic, weak) NSString *savedUserId;
 
 @end

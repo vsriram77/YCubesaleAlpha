@@ -10,9 +10,9 @@
                 <outlet property="ctimeLabel" destination="HWd-hs-yFm" id="bsr-S1-sXF"/>
                 <outlet property="cubeLabel" destination="6hx-P0-Vgz" id="tbW-Hl-gK6"/>
                 <outlet property="fdescLabel" destination="qgf-L8-hH0" id="z8t-q4-Wwk"/>
+                <outlet property="fpriceLabel" destination="xmg-Ak-7iZ" id="O6e-Zf-5xa"/>
                 <outlet property="imageImage" destination="fOm-UZ-D0a" id="ys3-Sq-zMW"/>
                 <outlet property="locLabel" destination="FU8-0I-erC" id="awh-G0-9qL"/>
-                <outlet property="priceLabel" destination="xmg-Ak-7iZ" id="wrZ-qy-ewG"/>
                 <outlet property="sdescLabel" destination="tLD-y1-pWS" id="Gcn-Ne-s2Z"/>
                 <outlet property="view" destination="1" id="3"/>
                 <outlet property="ynickLabel" destination="hXn-QY-NJO" id="PtB-gG-s2T"/>
@@ -26,7 +26,7 @@
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="sdesc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLD-y1-pWS">
                     <rect key="frame" x="20" y="56" width="280" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -60,7 +60,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmg-Ak-7iZ">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="fprice" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmg-Ak-7iZ">
                     <rect key="frame" x="20" y="344" width="280" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>

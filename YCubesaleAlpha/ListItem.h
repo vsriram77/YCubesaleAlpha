@@ -17,7 +17,7 @@
 @property (nonatomic, strong, readonly) NSString *cat;
 @property (nonatomic, strong, readonly) NSString *loc;
 @property (nonatomic, strong, readonly) NSString *cube;
-@property (nonatomic, strong, readonly) NSString *price;
+@property (nonatomic, strong, readonly) NSString *fprice;
 @property (nonatomic, strong, readonly) NSString *image;
 
 + (NSMutableArray *)listItemsWithArray:(NSArray *)array;

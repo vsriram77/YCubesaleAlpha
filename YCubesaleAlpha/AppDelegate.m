@@ -7,30 +7,21 @@
 //
 
 #import "AppDelegate.h"
+#import "WelcomeViewController.h"
 
 @implementation AppDelegate
-
-@synthesize savedUserId;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.welcomeViewController = [[ WelcomeViewController alloc] init];
-    // self.bouncerLoginViewController = [[ BouncerLoginViewController alloc] init];
-    NSString *savedUserId = [[NSUserDefaults standardUserDefaults] stringForKey:@"SAVED_USERID"];
-    if (savedUserId != nil) {
-        NSLog(@"userid is not null: %@", savedUserId);
-        // [self.bouncerLoginViewController setSavedUserId:savedUserId];
-        [self.welcomeViewController setSavedUserId:savedUserId];
-    } else {
-        NSLog(@"userid is null");
-        [self.welcomeViewController setSavedUserId:@""];
-        //[self.bouncerLoginViewController setSavedUserId:@""];
-    }
 
-    // UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:self.bouncerLoginViewController];
-    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:self.welcomeViewController];
+    WelcomeViewController *welcomeViewController = [[ WelcomeViewController alloc] init];
+    NSString *savedUserId = [[NSUserDefaults standardUserDefaults] stringForKey:@"SAVED_USERID"];
+    [welcomeViewController setSavedUserId:savedUserId];
+
+    NSLog(@"Retrieved from UserDefaults: savedUserId=%@", (savedUserId == nil)? @"nil" : savedUserId);
+    
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:welcomeViewController];
     self.window.rootViewController = nvc;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -48,7 +39,6 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    [self doSaveUserId];
 
 }
 
@@ -65,13 +55,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    [self doSaveUserId];
 }
 
-- (void) doSaveUserId
-{
-    
-    NSLog(@"doSaveUserId: saving userid: %@", self.savedUserId);
-    [[NSUserDefaults standardUserDefaults] setObject:self.savedUserId forKey:@"SAVED_USERID"];
-}
 @end

@@ -42,7 +42,7 @@
     self.catLabel.text = self.listItem.cat;
     self.cubeLabel.text = self.listItem.cube;
     self.locLabel.text = self.listItem.loc;
-    self.priceLabel.text = self.listItem.price;
+    self.fpriceLabel.text = self.listItem.fprice;
     //self.sdescLabel.text = self.listItem.image;
     NSURL *url = [NSURL URLWithString:self.listItem.image ];
     UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]];

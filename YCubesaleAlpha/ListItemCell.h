@@ -10,6 +10,8 @@
 
 @interface ListItemCell : UITableViewCell
 @property (nonatomic, weak) IBOutlet UILabel *sdescLabel;
+@property (nonatomic, weak) IBOutlet UILabel *ynickLabel;
+@property (nonatomic, weak) IBOutlet UILabel *fpriceLabel;
 @property (nonatomic, weak) IBOutlet UILabel *ctimeLabel;
 
 - (IBAction)onTapTableCell;
