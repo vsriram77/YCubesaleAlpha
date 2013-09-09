@@ -18,8 +18,7 @@
 @property (nonatomic, strong) NSMutableArray *listItems;
 
 - (void) getUserNameWithEmail: (NSString *)email;
-- (void) formatCellWithBackground:(UIColor *) bgcolor textColor:(UIColor *) textColor;
-
+- (void) formatCell:(ListItemCell *) listItemCell backgroundColor:(UIColor *) backgroundColor textColor:(UIColor *) textColor;
 
 @end
 

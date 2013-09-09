@@ -34,8 +34,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.navigationItem setHidesBackButton:YES];
     NSLog(@"BouncerLoginViewController::viewDidLoad enter");
-    // Do any additional setup after loading the view from its nib.
+
 }
 
 - (void)didReceiveMemoryWarning
