@@ -11,6 +11,8 @@
 @interface ListingsViewController : UITableViewController
 
 @property (nonatomic, weak) NSString *savedUserId;
-@property (nonatomic, weak) NSString *savedUserName;
+@property (nonatomic, strong) NSString *savedUserName;
+
+-(void) fixTitleUser:(NSTimer *) timer;
 
 @end

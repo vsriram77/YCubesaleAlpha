@@ -12,4 +12,7 @@
 
 @property (nonatomic, weak) NSString *savedUserId;
 
+@property (nonatomic, weak) IBOutlet UIImageView *welcomeImage;
+
+-(void) launchBouncerView:  (NSTimer *) timer;
 @end

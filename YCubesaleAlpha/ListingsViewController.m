@@ -17,7 +17,7 @@
 
 @property (nonatomic, strong) NSMutableArray *listItems;
 
-- (void) getUserNameWithEmail: (NSString *)email;
+- (void) fetchUserName;
 - (void) formatCell:(ListItemCell *) listItemCell backgroundColor:(UIColor *) backgroundColor textColor:(UIColor *) textColor;
 
 @end
@@ -58,10 +58,19 @@
     UINib *customNib = [UINib nibWithNibName:@"ListItemCell" bundle:nil];
     [self.tableView registerNib:customNib forCellReuseIdentifier:@"ListItemCell"];
     
-    //[self getUserNameWithEmail:self.savedUserId];
-    self.title = self.savedUserId;
+    [self fetchUserName];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval: 1 target:self selector:@selector(fixTitleUser:) userInfo:nil repeats:NO];
+
     [self.navigationItem setHidesBackButton:YES];
     
+}
+
+-(void) fixTitleUser:(NSTimer *)timer
+{
+    NSLog(@"fixTitleUserEmail: %@", self.savedUserName);
+    NSLog(@"fixTitleUserId: %@", self.savedUserId);
+    NSLog(@"fixTitleUser class: %@", [[self class] debugDescription]);
+    self.title = [NSString stringWithFormat:@"Hello %@", self.savedUserName];
 }
 
 - (void)reload
@@ -129,41 +138,35 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) getUserNameWithEmail: (NSString *)email
+- (void) fetchUserName
 {
     static NSString *const baseURLString = @"http://php.corp.yahoo.com/";
-    NSString *userProfileJsonUrl = [NSString stringWithFormat:@"%@emp.php?query=%@&type=email", baseURLString, email];
+    NSString *userProfileJsonUrl = [NSString stringWithFormat:@"%@emp.php?query=%@&type=email", baseURLString, self.savedUserId];
     NSURL *url = [NSURL URLWithString:userProfileJsonUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     NSLog(@"getUserNameWithEmail: before Request");
-    // 2
     AFJSONRequestOperation *operation =
     [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-     // 3
-                                                    success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                                        NSLog(@"getUserNameWithEmail: Call successful!");
-                                                        NSDictionary *dict  = (NSDictionary *)JSON;
-                                                        NSArray *yahoos = (NSArray*)[dict valueForKey:@"yahoos"];
-                                                        NSDictionary *aYahoo = [yahoos objectAtIndex: 0];
-                                                        self.savedUserName =  (NSString*)[aYahoo valueForKey:@"yfirst"];
-                                                        NSString *yahooName = self.savedUserName;
-                                                        NSLog(@"Name: %@", yahooName);
-                                                        
-                                                        
-                                                    }
-     // 4
-                                                    failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                                                        NSLog(@"didTapGetNameButton: Call failed!");
-                                                        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Weather"
-                                                                                                     message:[NSString stringWithFormat:@"%@",error]
-                                                                                                    delegate:nil
-                                                                                           cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                                        [av show];
+            success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                NSLog(@"getUserNameWithEmail: Call successful!");
+                NSDictionary *dict  = (NSDictionary *)JSON;
+                NSArray *yahoos = (NSArray*)[dict valueForKey:@"yahoos"];
+                NSDictionary *aYahoo = [yahoos objectAtIndex: 0];
+                self.savedUserName = (NSString*)[aYahoo valueForKey:@"yfirst"];
+                NSLog(@"Name: %@", self.savedUserName);
+                NSLog(@"getUserNameWithEmail class: %@", [[self class] debugDescription]);
+            }
+            failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                NSLog(@"getUserNameWithEmail: Call failed!");
+                UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Weather"
+                    message:[NSString stringWithFormat:@"%@",error]
+                    delegate:nil
+                    cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [av show];
                                                     }];
     
-    // 5
-    [operation waitUntilFinished];
+    [operation start];
     
 }
 

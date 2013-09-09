@@ -11,6 +11,7 @@
 #import "ListingsViewController.h"
 #import "BouncerLoginViewController.h"
 
+
 @implementation WelcomeViewController
 
 @synthesize savedUserId;
@@ -25,15 +26,28 @@
     return self;
 }
 
+
+- (void)launchBouncerView: (NSTimer *) timer
+{
+    BouncerLoginViewController *bouncerViewController = [[ BouncerLoginViewController alloc] init];
+    [self.navigationController pushViewController:bouncerViewController animated:YES];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     NSLog(@"WelcomeViewController: viewDidLoad Enter");
-    // [NSThread sleepForTimeInterval:3];
+    NSURL *imgUrl = [NSURL URLWithString:@"http://greatplate.corp.gq1.yahoo.com/ycubesale/pic2twochairs.jpg" ];
+    UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL:imgUrl]];
+    [self.welcomeImage setImage:image];
+
     
     if ((self.savedUserId == nil) || [self.savedUserId isEqualToString:@""]) {
-        BouncerLoginViewController *bouncerViewController = [[ BouncerLoginViewController alloc] init];
-        [self.navigationController pushViewController:bouncerViewController animated:YES];
+        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval: 3
+                                                          target:self
+                                                        selector:@selector(launchBouncerView:)
+                                                        userInfo:nil
+                                                         repeats:NO];
         return;
     }
     
@@ -49,6 +63,7 @@
         
         ListingsViewController *listingsController = [[ListingsViewController alloc] init];
         listingsController.savedUserId = self.savedUserId;
+        [NSThread sleepForTimeInterval:3];
         [self.navigationController pushViewController:listingsController animated:YES];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
