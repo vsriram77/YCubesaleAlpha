@@ -15,6 +15,8 @@
 
 @property (nonatomic, weak) ListItem *listItem;
 
+@property (nonatomic, strong) NSString *savedUserName;
+
 @property (nonatomic, weak) IBOutlet UILabel *sdescLabel;
 @property (nonatomic, weak) IBOutlet UILabel *fdescLabel;
 @property (nonatomic, weak) IBOutlet UILabel *ynickLabel;

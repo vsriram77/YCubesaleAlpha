@@ -33,6 +33,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //self.navigationItem.title = [NSString stringWithFormat:@"Hello %@", self.savedUserName];
+    self.navigationItem.title = @"Item";
+    self.navigationItem.backBarButtonItem.title = @"Back";
+    
     self.view.backgroundColor = UIColorFromRGB(0x400090);
 
     self.fromStaticLabel.textColor = [UIColor whiteColor];
@@ -92,7 +96,7 @@
     MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
     controller.mailComposeDelegate = self;
     [controller setSubject: [NSString stringWithFormat:@"[YCubeSale] Interested in %@", self.listItem.sdesc]];
-    [controller setMessageBody:@"Hi\n\n -(auto generated from YCubeSale)" isHTML:NO];
+    [controller setMessageBody:@"Hi\n\n -(via YCubeSale iPhone app)" isHTML:NO];
     NSMutableArray * recipients = [[NSMutableArray alloc] init];
     NSArray *toRecipients = [NSArray arrayWithObject: [NSString stringWithFormat:@"%@@yahoo-inc.com", self.listItem.ynick]];
     [controller setToRecipients:toRecipients];

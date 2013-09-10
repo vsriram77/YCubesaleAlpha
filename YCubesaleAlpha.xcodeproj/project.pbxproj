@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		052F63B217DEA40900B360CA /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 052F63B117DEA40900B360CA /* SettingsViewController.m */; };
+		052F63BB17DEA8DA00B360CA /* SellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 052F63B917DEA8DA00B360CA /* SellViewController.m */; };
+		052F63BC17DEA8DA00B360CA /* SellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 052F63BA17DEA8DA00B360CA /* SellViewController.xib */; };
 		0595F65017DBED7B008DE306 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0595F64F17DBED7B008DE306 /* MessageUI.framework */; };
 		05C7602217CC39B400810E53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C7602117CC39B400810E53 /* Foundation.framework */; };
 		05C7602417CC39B400810E53 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C7602317CC39B400810E53 /* CoreGraphics.framework */; };
@@ -22,6 +25,10 @@
 		05C7604717CC39B400810E53 /* YCubesaleAlphaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C7604617CC39B400810E53 /* YCubesaleAlphaTests.m */; };
 		05C7605617CC3CBD00810E53 /* BouncerLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C7605417CC3CBD00810E53 /* BouncerLoginViewController.m */; };
 		05C7605717CC3CBD00810E53 /* BouncerLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05C7605517CC3CBD00810E53 /* BouncerLoginViewController.xib */; };
+		05C7EFDC17DF8CC400C00A73 /* LogoutSettingsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C7EFDB17DF8CC400C00A73 /* LogoutSettingsCell.m */; };
+		05C7EFDE17DF8CF300C00A73 /* LogoutSettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05C7EFDD17DF8CF300C00A73 /* LogoutSettingsCell.xib */; };
+		05C7EFE117DF8F8900C00A73 /* FiltersSettingsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C7EFE017DF8F8900C00A73 /* FiltersSettingsCell.m */; };
+		05C7EFE317DF8FD800C00A73 /* FiltersSettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05C7EFE217DF8FD800C00A73 /* FiltersSettingsCell.xib */; };
 		05CB9E2417D95E7300F4D82A /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CB9E2217D95E7300F4D82A /* WelcomeViewController.m */; };
 		05CB9E2517D95E7300F4D82A /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05CB9E2317D95E7300F4D82A /* WelcomeViewController.xib */; };
 		05CB9E2917D9653E00F4D82A /* ListingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CB9E2717D9653E00F4D82A /* ListingsViewController.m */; };
@@ -46,6 +53,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		052F63B017DEA40900B360CA /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		052F63B117DEA40900B360CA /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		052F63B817DEA8DA00B360CA /* SellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellViewController.h; sourceTree = "<group>"; };
+		052F63B917DEA8DA00B360CA /* SellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellViewController.m; sourceTree = "<group>"; };
+		052F63BA17DEA8DA00B360CA /* SellViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SellViewController.xib; sourceTree = "<group>"; };
 		0595F64F17DBED7B008DE306 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		05C7601E17CC39B400810E53 /* YCubesaleAlpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YCubesaleAlpha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C7602117CC39B400810E53 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -66,6 +78,12 @@
 		05C7605317CC3CBD00810E53 /* BouncerLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BouncerLoginViewController.h; sourceTree = "<group>"; };
 		05C7605417CC3CBD00810E53 /* BouncerLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BouncerLoginViewController.m; sourceTree = "<group>"; };
 		05C7605517CC3CBD00810E53 /* BouncerLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BouncerLoginViewController.xib; sourceTree = "<group>"; };
+		05C7EFDA17DF8CC300C00A73 /* LogoutSettingsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoutSettingsCell.h; sourceTree = "<group>"; };
+		05C7EFDB17DF8CC400C00A73 /* LogoutSettingsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoutSettingsCell.m; sourceTree = "<group>"; };
+		05C7EFDD17DF8CF300C00A73 /* LogoutSettingsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogoutSettingsCell.xib; sourceTree = "<group>"; };
+		05C7EFDF17DF8F8900C00A73 /* FiltersSettingsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiltersSettingsCell.h; sourceTree = "<group>"; };
+		05C7EFE017DF8F8900C00A73 /* FiltersSettingsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiltersSettingsCell.m; sourceTree = "<group>"; };
+		05C7EFE217DF8FD800C00A73 /* FiltersSettingsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiltersSettingsCell.xib; sourceTree = "<group>"; };
 		05CB9E2117D95E7300F4D82A /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		05CB9E2217D95E7300F4D82A /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		05CB9E2317D95E7300F4D82A /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
@@ -173,6 +191,17 @@
 				05CB9E3B17DBD7FD00F4D82A /* ListingCardViewController.h */,
 				05CB9E3C17DBD7FD00F4D82A /* ListingCardViewController.m */,
 				05CB9E3D17DBD7FD00F4D82A /* ListingCardViewController.xib */,
+				052F63B017DEA40900B360CA /* SettingsViewController.h */,
+				052F63B117DEA40900B360CA /* SettingsViewController.m */,
+				052F63B817DEA8DA00B360CA /* SellViewController.h */,
+				052F63B917DEA8DA00B360CA /* SellViewController.m */,
+				052F63BA17DEA8DA00B360CA /* SellViewController.xib */,
+				05C7EFDA17DF8CC300C00A73 /* LogoutSettingsCell.h */,
+				05C7EFDB17DF8CC400C00A73 /* LogoutSettingsCell.m */,
+				05C7EFDD17DF8CF300C00A73 /* LogoutSettingsCell.xib */,
+				05C7EFDF17DF8F8900C00A73 /* FiltersSettingsCell.h */,
+				05C7EFE017DF8F8900C00A73 /* FiltersSettingsCell.m */,
+				05C7EFE217DF8FD800C00A73 /* FiltersSettingsCell.xib */,
 			);
 			path = YCubesaleAlpha;
 			sourceTree = "<group>";
@@ -295,6 +324,9 @@
 			files = (
 				05C7605717CC3CBD00810E53 /* BouncerLoginViewController.xib in Resources */,
 				05CB9E2517D95E7300F4D82A /* WelcomeViewController.xib in Resources */,
+				05C7EFDE17DF8CF300C00A73 /* LogoutSettingsCell.xib in Resources */,
+				05C7EFE317DF8FD800C00A73 /* FiltersSettingsCell.xib in Resources */,
+				052F63BC17DEA8DA00B360CA /* SellViewController.xib in Resources */,
 				05CB9E2F17D973BA00F4D82A /* ListItemCell.xib in Resources */,
 				05CB9E3F17DBD7FD00F4D82A /* ListingCardViewController.xib in Resources */,
 				05C7602C17CC39B400810E53 /* InfoPlist.strings in Resources */,
@@ -352,12 +384,16 @@
 			files = (
 				05CB9E3A17DABDA900F4D82A /* NSDictionary+CPAdditions.m in Sources */,
 				05C7605617CC3CBD00810E53 /* BouncerLoginViewController.m in Sources */,
+				05C7EFDC17DF8CC400C00A73 /* LogoutSettingsCell.m in Sources */,
 				05CB9E2417D95E7300F4D82A /* WelcomeViewController.m in Sources */,
 				05CB9E3E17DBD7FD00F4D82A /* ListingCardViewController.m in Sources */,
 				05CB9E2D17D973A500F4D82A /* ListItemCell.m in Sources */,
 				05CB9E3217D9773000F4D82A /* ListItem.m in Sources */,
+				052F63BB17DEA8DA00B360CA /* SellViewController.m in Sources */,
 				05CB9E3517DAB28200F4D82A /* RestObject.m in Sources */,
 				05CB9E2917D9653E00F4D82A /* ListingsViewController.m in Sources */,
+				05C7EFE117DF8F8900C00A73 /* FiltersSettingsCell.m in Sources */,
+				052F63B217DEA40900B360CA /* SettingsViewController.m in Sources */,
 				05C7603217CC39B400810E53 /* AppDelegate.m in Sources */,
 				05C7602E17CC39B400810E53 /* main.m in Sources */,
 			);

@@ -11,7 +11,10 @@
 #import "ListingsViewController.h"
 #import "BouncerLoginViewController.h"
 
+@interface WelcomeViewController ()
+-(void) doDelayedLaunch;
 
+@end
 @implementation WelcomeViewController
 
 @synthesize savedUserId;
@@ -26,11 +29,20 @@
     return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    
+}
 
 - (void)launchBouncerView: (NSTimer *) timer
 {
     BouncerLoginViewController *bouncerViewController = [[ BouncerLoginViewController alloc] init];
     [self.navigationController pushViewController:bouncerViewController animated:YES];
+}
+
+-(void) doDelayedLaunch
+{
+    
 }
 
 - (void)viewDidLoad

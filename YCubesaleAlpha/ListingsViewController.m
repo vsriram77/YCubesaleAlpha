@@ -11,6 +11,8 @@
 #import "ListItemCell.h"
 #import "ListItem.h"
 #import "ListingCardViewController.h"
+#import "SettingsViewController.h"
+#import "SellViewController.h"
 
 
 @interface ListingsViewController ()
@@ -58,10 +60,35 @@
     UINib *customNib = [UINib nibWithNibName:@"ListItemCell" bundle:nil];
     [self.tableView registerNib:customNib forCellReuseIdentifier:@"ListItemCell"];
     
+    self.navigationItem.title = @"YCubesale";
+
     [self fetchUserName];
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval: 1 target:self selector:@selector(fixTitleUser:) userInfo:nil repeats:NO];
+    // NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval: 2 target:self selector:@selector(fixTitleUser:) userInfo:nil repeats:NO];
 
     [self.navigationItem setHidesBackButton:YES];
+    // self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(doLogout)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"+" style:UIBarButtonItemStylePlain target:self action:@selector(pushSellController)];
+}
+-(void) doLogout
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void) pushSettingsController
+{
+    SettingsViewController *svc = [[SettingsViewController alloc] init];
+    svc.savedUserName = self.savedUserName;
+    svc.savedUserId = self.savedUserId;
+    NSLog(@"username: %@", self.savedUserName);
+    [self.navigationController pushViewController:svc animated:YES];
+
+}
+
+
+-(void) pushSellController
+{
+    SellViewController *svc = [[SellViewController alloc] init];
+    [self.navigationController pushViewController:svc animated:YES];
     
 }
 
@@ -70,7 +97,7 @@
     NSLog(@"fixTitleUserEmail: %@", self.savedUserName);
     NSLog(@"fixTitleUserId: %@", self.savedUserId);
     NSLog(@"fixTitleUser class: %@", [[self class] debugDescription]);
-    self.title = [NSString stringWithFormat:@"Hello %@", self.savedUserName];
+    self.navigationItem.title = [NSString stringWithFormat:@"Hello %@", self.savedUserName];
 }
 
 - (void)reload
@@ -244,6 +271,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ListingCardViewController *lcvc = [[ListingCardViewController alloc] init];
+    lcvc.savedUserName = self.savedUserName;
     ListItem *listItem = self.listItems[indexPath.row];    
     lcvc.listItem = listItem;
     [self.navigationController pushViewController:lcvc animated:YES];
